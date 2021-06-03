@@ -1,3 +1,14 @@
+/*
+Table of Content
+  1. Navbar Section
+  2. Landing Section
+  3. About Section
+  > Media Queries
+
+  TODO: can i split this into different files? (ex: nav.css ?)
+  TODO: css variables, grid system
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 :root {
   --primary-color: #4070f4;
@@ -6,6 +17,7 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 *,
 *::before,
@@ -19,28 +31,31 @@ body {
   letter-spacing: 1px;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
+  /* background-color: #202020; */
 }
+/* Navbar Section */
 .navbar {
   height: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 400;
+  /* position: fixed; */
 }
 .nav-logo {
-  color: var(--secondary-color);
   text-decoration: none;
+  color: #fff;
 }
 .navbar-nav {
   list-style: none;
 }
 
+/* for navbar hamburger menu */
 @media screen and (max-width: 768px) {
   .navbar {
     width: 90%;
     margin: 0 auto;
   }
-  /* for navbar hamburger menu */
   .navbar-menu {
     position: fixed;
     /* top: 3rem; */
@@ -78,7 +93,7 @@ body {
   width: 100%;
 }
 .nav-toggle {
-  color: var(--secondary-color);
+  color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -95,6 +110,98 @@ body {
   background-color: pink;
 }
 
+/* Landing Section */
+#landing {
+  width: 100%;
+  height: 760px;
+  background-image: url("./images/daniel-leone-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.landing-content {
+  height: 400px;
+  text-align: center;
+
+  padding-top: 5em;
+  color: #fff;
+}
+.small-text {
+  font-size: 1.25rem;
+}
+.landing-content .landing-header {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+}
+.landing-content .intro {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.page-scroll {
+  color: #fff;
+  display: inline-block;
+  font-size: 3rem;
+  margin-top: 2em;
+  padding: 10px 14px;
+  transition: all 200ms ease;
+}
+
+/* About Section */
+.grid-container {
+  padding: 3em 0;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "heading" "image" "info";
+  justify-items: center;
+}
+.grid-container h2 {
+  grid-area: heading;
+  font-size: 1.8rem;
+}
+.grid-container img {
+  grid-area: image;
+  display: block;
+  width: 250px;
+  height: 250px;
+  margin: 2em 0;
+
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about-content {
+  grid-area: info;
+  /* max-width: 45ch; */
+  width: 85%;
+}
+
+.skill-list {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  list-style: none;
+}
+.skill-list li {
+  width: 70%;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0 1em;
+  position: relative;
+}
+.skill-list li::before {
+  content: ">";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  line-height: 20px;
+}
+
+/* Media Queries */
 /* large screen size */
 @media screen and (min-width: 768px) {
   .navbar {
@@ -114,6 +221,40 @@ body {
     display: none;
   }
   .nav-link {
-    color: #202020;
+    color: #fff;
+  }
+
+  #landing {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .landing-content {
+    max-width: 60ch;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .scroll-container {
+    text-align: center;
+  }
+  .page-scroll {
+    margin-top: 5em;
+  }
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "heading heading" "image info";
+
+    padding: 3em 5em;
+    align-items: center;
+  }
+  .about-content {
+    width: 100%;
+  }
+  .list-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .skill-list li {
+    padding: 0 1.3em;
   }
 }
