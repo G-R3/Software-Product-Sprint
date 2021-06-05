@@ -3,6 +3,7 @@ Table of Content
   1. Navbar Section
   2. Landing Section
   3. About Section
+  4. Project Section
   > Media Queries
 
   TODO: can i split this into different files? (ex: nav.css ?)
@@ -139,6 +140,7 @@ body {
   margin: 0 auto;
 }
 .page-scroll {
+  opacity: 0.5;
   color: #fff;
   display: inline-block;
   font-size: 3rem;
@@ -201,6 +203,69 @@ body {
   line-height: 20px;
 }
 
+/* Project Section */
+#showcase h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+.project-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 1em;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+.card {
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: auto;
+}
+.card .card-img {
+  width: 100%;
+  display: block;
+}
+.card-body {
+  width: 100%;
+  padding: 1em 2em;
+}
+.card-body .card-header {
+  /* font-size: 1.2rem; */
+  font-size: clamp(1rem, 1.4rem, 2rem);
+  margin-bottom: 0.5em;
+}
+.card-body .card-text {
+  min-width: 20ch;
+  margin-bottom: 0.5em;
+  /* font-size: 0.8rem; */
+  font-size: clamp(0.8rem, 1rem, 1.3rem);
+}
+.card-body .card-subtext {
+  color: gray;
+  display: block;
+  /* font-weight: 100; */
+  font-size: clamp(0.8rem, 1rem, 1.3rem);
+}
+.card-body a {
+  font-size: clamp(1rem, 1.2rem, 1.6rem);
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #4070f4;
+  padding: 0.6em 1.4em;
+  border-radius: 5px;
+  margin-top: 1em;
+  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.1);
+}
 /* Media Queries */
 /* large screen size */
 @media screen and (min-width: 768px) {
@@ -256,5 +321,15 @@ body {
   }
   .skill-list li {
     padding: 0 1.3em;
+  }
+  .project-showcase {
+    flex-direction: row;
+  }
+  .card {
+    width: 500px;
+    min-width: 25%;
+  }
+  .card .card-img {
+    height: 350px;
   }
 }
