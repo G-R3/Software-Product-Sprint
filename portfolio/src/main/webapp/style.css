@@ -4,10 +4,12 @@ Table of Content
   2. Landing Section
   3. About Section
   4. Project Section
-  > Media Queries
+  5. Contact Section
+  6. Media Queries
 
-  TODO: can i split this into different files? (ex: nav.css ?)
-  TODO: css variables, grid system
+  // TODO: animations (maybe?), colors (color palette), do something with JS
+  // TODO: do something else with the About section(after deploying maybe)
+  // TODO: hook the form up to something (my email maybe), clean the css
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
@@ -34,14 +36,16 @@ body {
   font-size: 16px;
   /* background-color: #202020; */
 }
+.main-container {
+  margin-bottom: 1.5em;
+}
 /* Navbar Section */
 .navbar {
   height: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 400;
-  /* position: fixed; */
+  /* font-weight: 100; */
 }
 .nav-logo {
   text-decoration: none;
@@ -52,7 +56,7 @@ body {
 }
 
 /* for navbar hamburger menu */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .navbar {
     width: 90%;
     margin: 0 auto;
@@ -160,7 +164,7 @@ body {
 }
 .grid-container h2 {
   grid-area: heading;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
 }
 .grid-container img {
   grid-area: image;
@@ -205,9 +209,9 @@ body {
 
 /* Project Section */
 #showcase h2 {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   text-align: center;
-  margin: 1.5em 0;
+  margin: 1.5em 0 0.5em 0;
 }
 
 .project-showcase {
@@ -217,7 +221,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   padding: 0 1em;
-  max-width: 2000px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 .card {
@@ -246,13 +250,11 @@ body {
 .card-body .card-text {
   min-width: 20ch;
   margin-bottom: 0.5em;
-  /* font-size: 0.8rem; */
   font-size: clamp(0.8rem, 1rem, 1.3rem);
 }
 .card-body .card-subtext {
   color: gray;
   display: block;
-  /* font-weight: 100; */
   font-size: clamp(0.8rem, 1rem, 1.3rem);
 }
 .card-body a {
@@ -262,6 +264,75 @@ body {
   color: white;
   background-color: #4070f4;
   padding: 0.6em 1.4em;
+  border-radius: 5px;
+  margin-top: 1em;
+  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.1);
+}
+#contact {
+  padding: 1em 1.2em;
+}
+#contact h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1.5em 0 0.5em 0;
+}
+.main-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-container {
+  position: relative;
+  margin-bottom: 1.8em;
+  width: 100%;
+  max-width: 500px;
+}
+
+.input-container label {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0.6em;
+  top: 0.4em;
+  transition: all 200ms ease;
+  background-color: #fff;
+}
+.input-container .form-input {
+  font-size: clamp(0.8rem, 1.2rem, 1.3rem);
+  background-color: transparent;
+  padding: 0.5em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid rgb(197, 197, 197);
+  transition: all 350ms ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-radius: 5px;
+  border: 3px solid rgb(197, 197, 197);
+}
+.form-input:focus ~ label,
+.form-input:not(:placeholder-shown).form-input:not(:focus) ~ label {
+  top: -0.6em;
+  font-size: 0.8rem;
+}
+.form-button {
+  width: 85%;
+  max-width: 500px;
+  cursor: pointer;
+  font-size: clamp(1rem, 1.2rem, 1.6rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #4070f4;
+  padding: 0.6em 1.4em;
+  border: none;
   border-radius: 5px;
   margin-top: 1em;
   box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.1);
