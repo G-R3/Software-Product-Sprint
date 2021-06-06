@@ -6,16 +6,16 @@ Table of Content
   4. Project Section
   5. Contact Section
   6. Media Queries
-
-  // TODO: animations (maybe?), colors (color palette), do something with JS
-  // TODO: do something else with the About section(after deploying maybe)
-  // TODO: hook the form up to something (my email maybe), clean the css
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
 :root {
-  --primary-color: #4070f4;
-  --secondary-color: #0e2431;
+  --primary-color: hsl(203, 58%, 20%);
+  --secondary-color: hsl(203, 39%, 35%);
+  --text-font: "Poppins";
+  --font-color: #fff;
+  --transition-speed: 200ms;
 }
 html {
   box-sizing: border-box;
@@ -32,7 +32,7 @@ html {
 body {
   line-height: 1.3;
   letter-spacing: 1px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--text-font), sans-serif;
   font-size: 16px;
   /* background-color: #202020; */
 }
@@ -41,15 +41,15 @@ body {
 }
 /* Navbar Section */
 .navbar {
-  height: 3rem;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* font-weight: 100; */
 }
 .nav-logo {
+  font-size: 1.2rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--font-color);
 }
 .navbar-nav {
   list-style: none;
@@ -63,14 +63,15 @@ body {
   }
   .navbar-menu {
     position: fixed;
-    /* top: 3rem; */
+    top: 3rem;
     top: 0;
     right: -100%;
     width: 60%;
     height: 100%;
     padding: 2rem;
     background-color: var(--primary-color);
-    transition: 500ms;
+    transition: all var(--transition-speed) ease;
+    z-index: 2;
   }
 }
 .nav-item {
@@ -78,7 +79,7 @@ body {
 }
 .nav-link {
   position: relative;
-  color: #fff;
+  color: var(--font-color);
   text-decoration: none;
 }
 .nav-link:hover {
@@ -91,14 +92,14 @@ body {
   height: 2px;
   left: 0;
   top: 2rem;
-  background-color: pink;
-  transition: all 200ms ease;
+  background-color: var(--secondary-color);
+  transition: all var(--transition-speed) ease;
 }
 .nav-link:hover::after {
   width: 100%;
 }
 .nav-toggle {
-  color: #fff;
+  color: var(--font-color);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -112,7 +113,7 @@ body {
   height: 2px;
   left: 0;
   top: 2rem;
-  background-color: pink;
+  background-color: var(--secondary-color);
 }
 
 /* Landing Section */
@@ -130,56 +131,63 @@ body {
   text-align: center;
 
   padding-top: 5em;
-  color: #fff;
+  color: var(--font-color);
 }
 .small-text {
   font-size: 1.25rem;
+  font-weight: 300;
 }
 .landing-content .landing-header {
   font-size: 3rem;
   margin-bottom: 0.5em;
 }
 .landing-content .intro {
+  padding: 0 0.5em;
   max-width: 60ch;
   margin: 0 auto;
 }
 .page-scroll {
   opacity: 0.5;
-  color: #fff;
+  color: var(--font-color);
   display: inline-block;
   font-size: 3rem;
   margin-top: 2em;
   padding: 10px 14px;
-  transition: all 200ms ease;
+  transition: all var(--transition-speed) ease;
+}
+.page-scroll:hover,
+.page-scroll:focus {
+  opacity: 1;
 }
 
 /* About Section */
+#about {
+  margin: 3.5em 0;
+}
+
 .grid-container {
-  padding: 3em 0;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "heading" "image" "info";
   justify-items: center;
+  position: relative;
 }
 .grid-container h2 {
   grid-area: heading;
   font-size: 2.2rem;
+  margin-bottom: 1em;
 }
 .grid-container img {
   grid-area: image;
   display: block;
-  width: 250px;
-  height: 250px;
+  width: 60%;
+  /* height: 250px; */
   margin: 2em 0;
-
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 .about-content {
   grid-area: info;
-  /* max-width: 45ch; */
   width: 85%;
 }
 
@@ -194,24 +202,30 @@ body {
 .skill-list li {
   width: 70%;
   font-size: 1rem;
+  cursor: text;
   text-align: left;
   padding: 0 1em;
   position: relative;
+  margin: 0.2em;
 }
 .skill-list li::before {
   content: ">";
   width: 100%;
   position: absolute;
   left: 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 20px;
+  color: var(--primary-color);
 }
 
 /* Project Section */
+#showcase {
+  margin: 5em 0;
+}
 #showcase h2 {
   font-size: 2.2rem;
   text-align: center;
-  margin: 1.5em 0 0.5em 0;
+  margin-bottom: 0.5em;
 }
 
 .project-showcase {
@@ -243,16 +257,32 @@ body {
   padding: 1em 2em;
 }
 .card-body .card-header {
-  /* font-size: 1.2rem; */
+  width: 60%;
   font-size: clamp(1rem, 1.4rem, 2rem);
   margin-bottom: 0.5em;
+  position: relative;
 }
+.card-body .card-header::after {
+  content: "";
+  width: 25%;
+  max-width: 60px;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  background-color: var(--primary-color);
+}
+
 .card-body .card-text {
+  letter-spacing: 1px;
+  line-height: 1.4;
   min-width: 20ch;
   margin-bottom: 0.5em;
   font-size: clamp(0.8rem, 1rem, 1.3rem);
 }
 .card-body .card-subtext {
+  font-weight: 300;
   color: gray;
   display: block;
   font-size: clamp(0.8rem, 1rem, 1.3rem);
@@ -261,20 +291,28 @@ body {
   font-size: clamp(1rem, 1.2rem, 1.6rem);
   display: inline-block;
   text-decoration: none;
-  color: white;
-  background-color: #4070f4;
+  background-color: var(--primary-color);
+  color: var(--font-color);
   padding: 0.6em 1.4em;
   border-radius: 5px;
   margin-top: 1em;
-  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+.card-body a:active,
+.card-body a:focus {
+  outline: none;
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
 }
 #contact {
-  padding: 1em 1.2em;
+  padding: 0 1.2em;
+  margin: 3.5em 0 2em 0;
 }
 #contact h2 {
   font-size: 2.2rem;
   text-align: center;
-  margin: 1.5em 0 0.5em 0;
+  margin-bottom: 0.5em;
 }
 .main-form {
   display: flex;
@@ -289,12 +327,14 @@ body {
 }
 
 .input-container label {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  cursor: text;
   position: absolute;
   left: 0.6em;
   top: 0.4em;
-  transition: all 200ms ease;
-  background-color: #fff;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--font-color);
 }
 .input-container .form-input {
   font-size: clamp(0.8rem, 1.2rem, 1.3rem);
@@ -306,19 +346,20 @@ body {
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid transparent;
-  border-bottom: 2px solid rgb(197, 197, 197);
-  transition: all 350ms ease;
+  border-bottom: 2px solid var(--primary-color);
+  transition: all var(--transition-speed) ease;
 }
 
 .form-input:focus {
   outline: none;
   border-radius: 5px;
-  border: 3px solid rgb(197, 197, 197);
+  border: 3px solid var(--primary-color);
 }
 .form-input:focus ~ label,
 .form-input:not(:placeholder-shown).form-input:not(:focus) ~ label {
   top: -0.6em;
   font-size: 0.8rem;
+  color: var(--primary-color);
 }
 .form-button {
   width: 85%;
@@ -330,18 +371,24 @@ body {
   display: inline-block;
   text-decoration: none;
   color: white;
-  background-color: #4070f4;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
   padding: 0.6em 1.4em;
   border: none;
   border-radius: 5px;
   margin-top: 1em;
-  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+}
+.form-button:active,
+.form-button:focus {
+  outline: none;
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
 }
 /* Media Queries */
 /* large screen size */
 @media screen and (min-width: 768px) {
   .navbar {
-    height: 4rem;
     width: 70%;
     margin: 0 auto;
   }
@@ -360,10 +407,6 @@ body {
     color: #fff;
   }
 
-  #landing {
-    flex-direction: row;
-    justify-content: space-around;
-  }
   .landing-content {
     max-width: 60ch;
     margin: 0 auto;
@@ -380,7 +423,7 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "heading heading" "image info";
 
-    padding: 3em 5em;
+    padding: 0 5em;
     align-items: center;
   }
   .about-content {
@@ -389,6 +432,9 @@ body {
   .list-container {
     width: 80%;
     margin: 0 auto;
+  }
+  .skill-list {
+    padding-left: 2.5em;
   }
   .skill-list li {
     padding: 0 1.3em;
@@ -402,5 +448,13 @@ body {
   }
   .card .card-img {
     height: 350px;
+  }
+
+  .card-body .card-header::after {
+    width: 0;
+    transition: all var(--transition-speed) ease;
+  }
+  .card:hover > .card-body > .card-header::after {
+    width: 25%;
   }
 }
