@@ -15,7 +15,7 @@ public class HelloWorldServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String[] quotes = {"I'll be back","Houston, we have a problem", "Here's Johnny!" };
+    String[] quotes = {"I'll be back - The Terminator (1984)","Houston, we have a problem - Apollo 13 (1995)", "Here's Johnny! - The Shining (1980)" };
 
     String json = new Gson().toJson(quotes);
     
