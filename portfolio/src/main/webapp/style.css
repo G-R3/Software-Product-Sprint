@@ -233,11 +233,16 @@ body {
 /* Random Quote */
 blockquote {
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto; 
+    text-align: center;
+}
+blockquote h2 {
+    font-size: 1.7em;
 }
 blockquote #msg-container {
+    font-size: 2em;    
     font-style: italic;
-    text-align: center;
+    font-weight: 300;
 }
 /* Project Section */
 #showcase {
