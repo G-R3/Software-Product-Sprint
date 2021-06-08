@@ -1,10 +1,11 @@
 /*
 Table of Content
-  1. Navbar Section
-  2. Landing Section
-  3. About Section
-  4. Project Section
-  5. Contact Section
+  > Navbar Section
+  > Landing Section
+  > About Section
+  > Random Quote
+  > Project Section
+  > Contact Section
   > Media Queries
 */
 
@@ -229,7 +230,15 @@ body {
   line-height: 20px;
   color: var(--primary-color);
 }
-
+/* Random Quote */
+blockquote {
+    width: 50%;
+    margin: 0 auto;
+}
+blockquote #msg-container {
+    font-style: italic;
+    text-align: center;
+}
 /* Project Section */
 #showcase {
   margin: 5em 0;
