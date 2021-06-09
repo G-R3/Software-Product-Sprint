@@ -360,6 +360,7 @@ blockquote #msg-container {
   top: 0.4em;
   transition: all var(--transition-speed) ease;
   background-color: var(--font-color);
+  cursor: text;
 }
 .input-container .form-input {
   font-size: clamp(0.8rem, 1.2rem, 1.3rem);
