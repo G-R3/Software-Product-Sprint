@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
+
 @WebServlet("/contact")
 public class FormHandlerServlet extends HttpServlet {
 
@@ -17,12 +23,16 @@ public class FormHandlerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String message = request.getParameter("message");
 
-        // Print the value so that we can see it in the server logs
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("email: " + email);
-        System.out.println("Message: " + message);
-
+        Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+        KeyFactory keyFactory = datastore.newKeyFactory().setKind("Submission");
+        FullEntity submissionEntity = 
+        Entity.newBuilder(keyFactory.newKey())
+            .set("First Name",firstName)
+            .set("Last Name", lastName)
+            .set("Email", email)
+            .set("Message", message)
+            .build();
+        datastore.put(submissionEntity);
 
         //Write the value to the response so the user can see it
         response.sendRedirect("/");
