@@ -135,7 +135,7 @@ body {
   align-items: center;
   width: 100%;
   height: 760px;
-  background-image: url("./images/alexandr-podvalny-unsplash.jpg");
+  background-image: url("../images/alexandr-podvalny-unsplash.jpg");
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
@@ -411,6 +411,12 @@ blockquote #msg-container {
   outline: none;
   background-color: var(--primary-color);
   box-shadow: 0 0 7px 5px rgba(0, 0, 0, 0.2);
+}
+#map {
+    border-radius: 2px;
+    height: 300px;
+    width: 550px;
+    margin: 2em auto;
 }
 /* Media Queries */
 /* large screen size */
